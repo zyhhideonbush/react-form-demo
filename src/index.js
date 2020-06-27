@@ -1,31 +1,8 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-
-const Input = ({lableName,type,name,onChange,value}) => {
-    return (
-        <div>
-            <label>
-                {lableName}
-            </label>
-            <input type={type} name={name}  onChange={onChange} value={value} required/>
-        </div>
-    );
-}
-
-const SingleSelect = ({lableName,name,onChange,options}) => {
-    return (
-        <div>
-            <label>
-                {lableName} 
-            </label>
-            <select name={name} onChange={onChange}>
-                {options.map((item,index) => {
-                    return <option key={index} value={item.option}>{item.option}</option>
-                })}
-            </select>
-        </div>
-    );
-}
+import Input from './components/Input'
+import SingleSelect from './components/SingleSelect'
+// import MultipleSelect from './components/MultipleSelect'
 
 const DemoForm = () => {
     const[ inputs , setInputs ]=useState({});
@@ -33,7 +10,7 @@ const DemoForm = () => {
     const[ countryValue , setCountryValue ] = useState('');
     const[ tecStackValue , setTecStackValue ] = useState([]);
     const[ provinceValue , setProvinceValue ] = useState('');
-    const[ cityOptions , setCityOptions ] = useState([]);
+    const[ cityOptions , setCityOptions ] = useState([{option:'please choose your province at first'}]);
     const[ cityValue , setCityValue ] = useState('');
     const genderOptions = [
         { option: "please choose your gender" },
@@ -56,14 +33,14 @@ const DemoForm = () => {
         { option: "C++" },
     ]
     const provinceOptions = [
-        { option: "please choose your province" , branch:["Choose your province first"]},
-        { option: "Shaanxi" , branch:["Xi'an","Baoji","Hanzhong","Weinan"]},
-        { option: "Heilongjiang" , branch:["Qiqihaer","Mudanjiang","Jiamusi","Daqing"]},
-        { option: "Jiangsu" , branch:["Nanjing","Wuxi","Xuzhou","Changzhou"]}
+        { option: "please choose your province" , branch:[{option:"Choose your province first"}]},
+        { option: "Shaanxi" , branch:[{option:"Xi'an"},{option:"Baoji"},{option:"Hanzhong"},{option:"Weinan"}]},
+        { option: "Heilongjiang" , branch:[{option:"Qiqihaer"},{option:"Mudanjiang"},{option:"Jiamusi"},{option:"Daqing"}]},
+        { option: "Jiangsu" , branch:[{option:"Nanjing"},{option:"Wuxi"},{option:"Xuzhou"},{option:"Changzhou"}]}
     ]
     const handleSubmit = () => {
         // eslint-disable-next-line
-        alert('User created! name:'+'\n'+inputs.firstName+inputs.lastName+'\n'+' age:'+inputs.age+'\n'+' Email:'+inputs.Email+'\n'+' Gender:'+genderValue+'\n'+' Contry:'+countryValue+'\n'+' Tec-Stack:'+tecStackValue+'\n'+" Province:"+provinceValue);
+        alert('User created! name:'+'\n'+inputs.firstName+inputs.lastName+'\n'+' age:'+inputs.age+'\n'+' Email:'+inputs.Email+'\n'+' Gender:'+genderValue+'\n'+' Contry:'+countryValue+'\n'+' Tec-Stack:'+tecStackValue+'\n'+" Province:"+provinceValue+'\n'+" City:"+cityValue);
     }
     const handleInputChange = (e) => {
         e.persist();//***
@@ -91,6 +68,8 @@ const DemoForm = () => {
     }
     const handleProvinceOnChange = (e) => {
         setProvinceValue(e.target.value)
+        const result = provinceOptions.filter(it=>it.option===e.target.value).map(it=>it.branch)[0]
+        setCityOptions(result)
     }
     const handleCityOnChange = (e) => {
         setCityValue(e.target.value)
@@ -138,6 +117,13 @@ const DemoForm = () => {
                     })}
                 </select>
             </div>
+            {/* <MultipleSelect
+                lableName="Technology Stack:"
+                name="tecStack"
+                value={tecStackValue}
+                onChange={handleTecStackValueChange}
+                tecoptions={tecStackOptions}
+            ></MultipleSelect> */}
             <SingleSelect
                 lableName="Province:"
                 name="province"
