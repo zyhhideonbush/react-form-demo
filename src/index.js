@@ -82,31 +82,31 @@ const DemoForm = () => {
             <Input 
                 lableName="FirstName:" type="text" name="firstName"
                 onChange={handleInputChange} value={inputs.firstName}
-            ></Input>
+            />
             <Input 
                 lableName="LastName:" type="text" name="lastName"
                 onChange={handleInputChange} value={inputs.lastName}
-            ></Input>
+            />
             <Input 
                 lableName="Age:" type="number" name="age"
                 onChange={handleInputChange} value={inputs.age}
-            ></Input>
+            />
             <Input 
                 lableName="Email Address:" type="text" name="Email"
                 onChange={handleInputChange} value={inputs.Email}
-            ></Input>
+            />
             <SingleSelect
                 lableName="Gender:"
                 name="gender-select"
                 onChange={handleGenderOnChange}
                 options={genderOptions}
-            ></SingleSelect>
+            />
             <SingleSelect
                 lableName="Country:"
                 name="country-select"
                 onChange={handleCountryOnChange}
                 options={countryOptions}
-            ></SingleSelect>
+            />
             <div>
                 <lable>
                     Technology Stack:
@@ -129,13 +129,13 @@ const DemoForm = () => {
                 name="province"
                 onChange={handleProvinceOnChange}
                 options={provinceOptions}
-            ></SingleSelect>
+            />
             <SingleSelect
                 lableName="City:"
                 name="city"
                 onChange={handleCityOnChange}
                 options={cityOptions}
-            ></SingleSelect>
+            SingleSelect/>
             <div>
                 <input type="submit" value="Submit" onClick={handleSubmit}/>
             </div>
