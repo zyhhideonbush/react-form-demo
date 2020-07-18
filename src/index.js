@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import Input from './components/Input'
 import SingleSelect from './components/SingleSelect'
-// import MultipleSelect from './components/MultipleSelect'
+import MultipleSelect from './components/MultipleSelect'
 
 const DemoForm = () => {
     const[ inputs , setInputs ]=useState({});
@@ -107,23 +107,13 @@ const DemoForm = () => {
                 onChange={handleCountryOnChange}
                 options={countryOptions}
             />
-            <div>
-                <lable>
-                    Technology Stack:
-                </lable>
-                <select name="tecStack" value={tecStackValue}  onChange={handleTecStackValueChange} multiple>
-                    {tecStackOptions.map((item,index) => {
-                        return <option key={index} value={item.option}>{item.option}</option>
-                    })}
-                </select>
-            </div>
-            {/* <MultipleSelect
+            <MultipleSelect
                 lableName="Technology Stack:"
                 name="tecStack"
                 value={tecStackValue}
                 onChange={handleTecStackValueChange}
                 tecoptions={tecStackOptions}
-            ></MultipleSelect> */}
+            ></MultipleSelect>
             <SingleSelect
                 lableName="Province:"
                 name="province"

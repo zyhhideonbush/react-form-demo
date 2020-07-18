@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MultipleSelect = (lableName,name,value,onChange,tecoptions) => {
+const MultipleSelect = ({lableName,name,value,onChange,tecoptions}) => {
     return (
         <div>
             <lable>
