@@ -39,7 +39,7 @@ const DemoForm = () => {
         { option: "Jiangsu" , branch:[{option:"Nanjing"},{option:"Wuxi"},{option:"Xuzhou"},{option:"Changzhou"}]}
     ]
     const handleSubmit = () => {
-        // eslint-disable-next-lineee
+        // eslint-disable-next-line
         alert('User created! name:'+'\n'+inputs.firstName+inputs.lastName+'\n'+' age:'+inputs.age+'\n'+' Email:'+inputs.Email+'\n'+' Gender:'+genderValue+'\n'+' Contry:'+countryValue+'\n'+' Tec-Stack:'+tecStackValue+'\n'+" Province:"+provinceValue+'\n'+" City:"+cityValue);
     }
     const handleInputChange = (e) => {
